@@ -1,0 +1,97 @@
+<!doctype html>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
+
+
+
+<head>
+<title>Pesquisa Titulo</title>
+</head>
+
+<section layout:fragment="corpo">
+
+	<!-- tabela de pesquisa cliente.  -->
+
+	<div class="card">
+		<div class="card-header ">
+			Pesquisa Cliente <a class="btn btn-link " href="/aluno/cadastro">Cadastro</a>
+		</div>
+
+		<div class="card-body">
+		<form  method="GET" class="form-horizontal">
+			<div class="form-group">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<input class="form-control" placeholder="Buscar..." autofocus="autofocus" name="nomeAluno">
+						<span class="input-group-btn" >
+							<button type="submit" class="btn btn-default">
+								<img src="/img/lupa.png" width="15px" height="15px" >
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+		
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th class="text-center  ">#</th>
+					<th>Descrição do produto</th>
+					<th class="text-center  ">Data de Vencimento</th>
+					<th class="text-right ">Valor</th>
+					<th class="text-right ">Status</th>
+					<th></th>
+
+				</tr>
+
+				<tbody>
+					<tr th:each="alunos : ${aluno}">
+						<td th:text="${alunos.codigo}"></td>
+						<td th:text="${alunos.nomeAluno}"></td>
+						<td th:text="${{alunos.idade}}"></td>
+						<td th:text="|R$ ${{alunos.curso}}|"></td>
+						<td><span class="badge " th:text="${alunos.status.descricao}"
+							th:classappend="${#strings.toString (alunos.status) == 'APROVADO' ? 'badge-success' : 'badge-danger'}"></span>
+						</td>
+						<td>
+							<!-- o th:href @ vai pesquisar o link para poder fazer a alteração  -->
+							<!-- Botão de edição -->
+							<a class="btn btn-link btn-xs"
+							th:href="@{/aluno/{codigo}(codigo=${aluno.codigo})}"> <img
+								src="/icone/open-iconic/png/pencil-2x.png"></a>
+							
+							<!-- Botão de Excluir -->
+							<a  class="btn btn-link btn-xs"  
+							th:href="@{/aluno/excluir/{codigo}(codigo=${aluno.codigo})}">
+								<img src="/icone/open-iconic/png/x-2x.png">
+							</a> 
+						
+					<tr>
+						<td colspan=6 th:if="${#lists.isEmpty(aluno) }">nenhum
+							titulo foi encontrado!<img src="/icone/open-iconic/png/clock-2x.png"/></td>
+					</tr>
+
+				</tbody>
+
+			</table>
+
+		</div>
+		
+	</div>
+
+
+</section>
+</html>
+
+
+
+
+
+
+
+
+		
