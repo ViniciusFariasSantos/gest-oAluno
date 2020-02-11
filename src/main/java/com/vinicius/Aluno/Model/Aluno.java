@@ -11,13 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
-//import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-//
+
 @Entity
 public class Aluno {
 
@@ -32,8 +31,8 @@ public class Aluno {
 	@NotNull(message ="Error: Data de vencimento é obrigatório")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	
 	public Date idade;
+	
 	@Size(max =  70, message = "Error: A descrição não pode conter mais que 60 caracteres")
 	@NotEmpty(message = "Error: Discrição é obrigatória")
 	public String curso;

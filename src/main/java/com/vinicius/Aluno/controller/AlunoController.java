@@ -65,7 +65,7 @@ public class AlunoController {
 			repositorio.save(aluno);
 
 			// colocando a mensagem Positiva pra funcionar.
-			attributes.addFlashAttribute("mensagem", "Título Salvo com sucesso!");
+			attributes.addFlashAttribute("mensagem", "Cadastro do aluno salvo com sucesso!");
 			return "redirect:/aluno/cadastro";
 	}
 

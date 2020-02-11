@@ -22,6 +22,7 @@
 		</div>
 
 		<div class="card-body">
+	
 		<form  method="GET" class="form-horizontal">
 			<div class="form-group">
 				<div class="col-sm-4">
@@ -58,18 +59,20 @@
 							th:classappend="${#strings.toString (alunos.status) == 'APROVADO' ? 'badge-success' : 'badge-danger'}"></span>
 						</td>
 						<td>
+					 
 							<!-- o th:href @ vai pesquisar o link para poder fazer a alteração  -->
 							<!-- Botão de edição -->
+						
 							<a class="btn btn-link btn-xs"
-							th:href="@{/aluno/{codigo}(codigo=${aluno.codigo})}"> <img
+							th:href="@{/aluno/{codigo}(codigo=${alunos.codigo})}"> <img
 								src="/icone/open-iconic/png/pencil-2x.png"></a>
 							
-							<!-- Botão de Excluir -->
+							<!-- Botão de Excluir _-->
 							<a  class="btn btn-link btn-xs"  
-							th:href="@{/aluno/excluir/{codigo}(codigo=${aluno.codigo})}">
+							th:href="@{/aluno/excluir/{codigo}(codigo=${alunos.codigo})}">
 								<img src="/icone/open-iconic/png/x-2x.png">
 							</a> 
-						
+						 
 					<tr>
 						<td colspan=6 th:if="${#lists.isEmpty(aluno) }">nenhum
 							titulo foi encontrado!<img src="/icone/open-iconic/png/clock-2x.png"/></td>
